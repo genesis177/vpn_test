@@ -1,0 +1,10 @@
+plugins {
+    id 'com.android.application' version '8.2.2' apply false
+    id 'com.android.library' version '8.2.2' apply false
+}
+
+group = 'ru.practicum'
+version = '1.0-SNAPSHOT'
+
+
+
