@@ -1,10 +1,9 @@
 package com.example.vpn.vpn;
 
 import android.util.Log;
-import com.example.vpn.core.SessionManager;
 import com.example.shared.TunnelPacket;
+import com.example.vpn.core.SessionManager;
 import com.example.vpn.tunnel.TunnelClient;
-
 
 import java.util.concurrent.atomic.AtomicBoolean;
 

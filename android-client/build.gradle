@@ -3,30 +3,40 @@ plugins {
 }
 
 android {
-    namespace 'com.example.vpn'
-    compileSdk 34
+    namespace = "com.example.vpn"
+    compileSdk = 34
 
     defaultConfig {
-        applicationId "com.example.vpn"
-        minSdk 26
-        targetSdk 34
-
-        versionCode 1
-        versionName "1.0"
+        applicationId = "com.example.vpn"
+        minSdk = 21
+        targetSdk = 34
+        versionCode = 1
+        versionName = "1.0"
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            debuggable = false
+            minifyEnabled = false
+        }
+
+        debug {
+            debuggable = true
         }
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }
 
 dependencies {
+
     implementation project(':shared')
+
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+
+    testImplementation 'junit:junit:4.13.2'
 }

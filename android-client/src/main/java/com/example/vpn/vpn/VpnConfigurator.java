@@ -1,5 +1,7 @@
 package com.example.vpn.vpn;
 
+import android.net.VpnService;
+import android.os.ParcelFileDescriptor;
 
 /**
  * Настраивает TUN-интерфейс: IP, маршруты, DNS, MTU.

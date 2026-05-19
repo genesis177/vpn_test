@@ -1,18 +1,10 @@
 package com.example.vpn.core;
 
+import android.util.Log;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * NAT-таблица (Network Address Translation).
- * <p>
- * Хранит маппинг:
- * srcIP:srcPort → dstIP:dstPort  (исходящие)
- * dstIP:dstPort → srcIP:srcPort  (обратный lookup)
- * <p>
- * В реальном VPN NAT значительно сложнее (port mapping, timeouts, ICMP...).
- * Здесь — учебная упрощённая версия.
- */
 public class NatTable {
 
     private static final String TAG = "NatTable";

@@ -15,7 +15,6 @@ public class TcpSession {
 
     private volatile State state = State.SYN_RECEIVED;
     private long lastActivity = System.currentTimeMillis();
-
     private long seqNum = 1000L;
     private long ackNum = 0L;
 

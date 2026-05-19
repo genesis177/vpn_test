@@ -39,6 +39,10 @@ public class IpHeader {
         return protocol == PROTOCOL_UDP;
     }
 
+    public boolean isTcpOrUdp() {
+        return isTcp() || isUdp();
+    }
+
     public int getSrcPort() {
         return read16(raw, headerLength);
     }

@@ -21,10 +21,10 @@ public class TunInterface {
     private final FileInputStream in;
     private final FileOutputStream out;
 
-    public TunInterface(ParcelFileDescriptor pfd) {
+    public TunInterface(ParcelFileDescriptor pfd) throws IOException {
         this.pfd = pfd;
         this.in = new FileInputStream(pfd.getFileDescriptor());
-        this.out = new FileOutputStream(pfd.getFileDescriptor())
+        this.out = new FileOutputStream(pfd.getFileDescriptor());
     }
 
     /**

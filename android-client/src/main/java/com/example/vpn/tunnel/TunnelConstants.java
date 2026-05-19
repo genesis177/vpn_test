@@ -2,7 +2,6 @@ package com.example.vpn.tunnel;
 
 /**
  * Константы туннеля.
- * Измените SERVER_HOST и SERVER_PORT под ваш VPS.
  */
 public final class TunnelConstants {
 

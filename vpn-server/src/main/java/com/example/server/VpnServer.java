@@ -47,7 +47,6 @@ public class VpnServer {
         running.set(true);
         log.info("VPN Server listening on :{}", port);
 
-        // Accept loop
         while (running.get()) {
             try {
                 SSLSocket clientSocket = (SSLSocket) serverSocket.accept();

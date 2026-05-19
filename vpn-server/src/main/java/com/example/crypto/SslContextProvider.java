@@ -24,7 +24,7 @@ public class SslContextProvider {
     private static final String KEYSTORE_PATH = System.getenv()
             .getOrDefault("KEYSTORE_PATH", "keystore.jks");
     private static final String KEYSTORE_PASSWORD = System.getenv()
-            .getOrDefault("KEYSTORE_PASSWORD", "changeit");
+            .getOrDefault("KEYSTORE_PASSWORD", "password");
 
     public static SSLContext build() throws Exception {
         // Загружаем keystore

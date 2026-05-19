@@ -1,11 +1,16 @@
 package com.example.vpn.vpn;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Intent;
+import android.net.VpnService;
+import android.os.ParcelFileDescriptor;
+import android.util.Log;
 import com.example.vpn.core.SessionManager;
 import com.example.vpn.tunnel.TunnelClient;
 import com.example.vpn.tunnel.TunnelConstants;
 
-
-import javax.management.Notification;
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -16,7 +21,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * 1. Создаёт TUN-интерфейс через VpnService.Builder
  * 2. Запускает PacketReader (читает IP-пакеты из TUN)
  * 3. Запускает PacketWriter (пишет ответы обратно в TUN)
- * 4. Пробрасывает пакеты через TunnelClient (TLS → сервер)
+ * 4. Пробрасывает пакеты через TunnelClient (TLS -> сервер)
  */
 public class MyVpnService extends VpnService {
 
@@ -38,6 +43,7 @@ public class MyVpnService extends VpnService {
         if (intent != null && ACTION_STOP.equals(intent.getAction())) {
             stopVpn();
             return START_NOT_STICKY;
+        }
         if (!running.get()) {
             startVpn();
         }
@@ -74,8 +80,9 @@ public class MyVpnService extends VpnService {
             executor.submit(packetReader);
             executor.submit(packetWriter);
 
+            startForegroundVpn();
 
-             Log.i(TAG, "VPN started");
+            Log.i(TAG, "VPN started");
         } catch (Exception e) {
             Log.e(TAG, "Failed to start VPN", e);
             stopVpn();
@@ -104,7 +111,6 @@ public class MyVpnService extends VpnService {
     }
 
     private void startForegroundVpn() {
-
         NotificationChannel channel = new NotificationChannel(
                 "vpn",
                 "VPN",
@@ -122,6 +128,4 @@ public class MyVpnService extends VpnService {
 
         startForeground(1, notification);
     }
-
-
 }

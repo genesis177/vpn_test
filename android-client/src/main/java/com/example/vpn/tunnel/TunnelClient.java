@@ -1,5 +1,6 @@
 package com.example.vpn.tunnel;
 
+import android.util.Log;
 import com.example.shared.TunnelPacket;
 import com.example.vpn.vpn.MyVpnService;
 
@@ -14,7 +15,7 @@ public class TunnelClient {
 
     private final String host;
     private final int port;
-    private final VpnService vpnService;
+    private final MyVpnService vpnService;
 
     private SSLSocket socket;
     private DataInputStream in;

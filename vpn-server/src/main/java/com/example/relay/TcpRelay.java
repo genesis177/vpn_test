@@ -2,6 +2,7 @@ package com.example.relay;
 
 
 import com.example.shared.IpHeader;
+import com.example.shared.PacketParser;
 import com.example.shared.TunnelEncoder;
 
 import java.io.InputStream;
@@ -44,7 +45,7 @@ public class TcpRelay {
         try {
             if (!active) return;
 
-            IpHeader ip = com.example.PacketParser.parseIpHeader(packet);
+            IpHeader ip = PacketParser.parseIpHeader(packet);
             if (ip == null) return;
 
             int payloadOffset = ip.headerLength + 20;

@@ -6,10 +6,11 @@ import android.net.VpnService;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.example.vpn.R;
 import com.example.vpn.vpn.MyVpnService;
 
+/**
+ * Минимальный UI: кнопки Connect / Disconnect + статус.
+ */
 public class MainActivity extends Activity {
 
     private static final int VPN_REQUEST_CODE = 1;
@@ -33,6 +34,9 @@ public class MainActivity extends Activity {
         setStatus("Не подключено");
     }
 
+    /**
+     * Запрашивает разрешение VPN у системы
+     */
     private void requestVpnPermission() {
         Intent intent = VpnService.prepare(this);
         if (intent != null) {
@@ -44,6 +48,7 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == VPN_REQUEST_CODE && resultCode == RESULT_OK) {
             startVpn();
         }
